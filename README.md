@@ -203,7 +203,6 @@ restaurant-process-simulation/
 
 - [Project documentation in Polish](docs/PROJECT_DOCUMENTATION_PL.md)
 - [Scenario guide in Polish](docs/SCENARIOS_PL.md)
-- [GitHub publishing checklist in Polish](docs/GITHUB_PUBLISHING_PL.md)
 
 ## Future Improvements
 
