@@ -175,6 +175,16 @@ javac -encoding UTF-8 -d out src/*.java
 java -cp out RestaurantLauncher --mode RUSH_HOUR
 ```
 
+## Tests
+
+A dependency-free smoke test starts a real `RestaurantServer` on a dynamic port with a tiny, fully known configuration (two tables, one waiter, one ingredient, one clean cutlery item) and drives it over TCP exactly like the client, restocker and GUI processes do:
+
+```bash
+make test
+```
+
+It checks the handshake and error replies, table allocation by group size, waiting and releasing tables, the single-waiter limit, ingredient and cutlery exhaustion, the restock cap, the clean/dirty/washed cutlery cycle and table cleanup when a client disconnects. The run takes about six seconds.
+
 ## Repository Structure
 
 ```text
@@ -182,7 +192,6 @@ restaurant-process-simulation/
 ├── docs/
 │   ├── PROJECT_DOCUMENTATION_PL.md
 │   ├── SCENARIOS_PL.md
-│   ├── GITHUB_PUBLISHING_PL.md
 │   └── screenshots/
 ├── src/
 │   ├── ClientProcess.java
@@ -192,6 +201,8 @@ restaurant-process-simulation/
 │   ├── RestaurantPanel.java
 │   ├── RestaurantServer.java
 │   └── RestockerProcess.java
+├── test/
+│   └── ProtocolSmokeTest.java
 ├── .editorconfig
 ├── .gitignore
 ├── Makefile
@@ -206,7 +217,7 @@ restaurant-process-simulation/
 
 ## Future Improvements
 
-- Automated smoke tests for the protocol and resource allocation rules.
+- Unit tests for the allocation rules without starting a server process.
 - Gradle or Maven build with GitHub Actions.
 - CSV export for simulation metrics.
 - Headless mode for reproducible stress tests.
