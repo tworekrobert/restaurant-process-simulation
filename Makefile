@@ -1,4 +1,4 @@
-.PHONY: build run run-normal run-rush run-limited run-no-restock run-short clean
+.PHONY: build test run run-normal run-rush run-limited run-no-restock run-short clean
 
 JAVA ?= java
 JAVAC ?= javac
@@ -6,6 +6,10 @@ OUT_DIR ?= out
 
 build:
 	$(JAVAC) -encoding UTF-8 -d $(OUT_DIR) src/*.java
+
+test: build
+	$(JAVAC) -encoding UTF-8 -cp $(OUT_DIR) -d $(OUT_DIR) test/*.java
+	$(JAVA) -cp $(OUT_DIR) ProtocolSmokeTest
 
 run: build
 	$(JAVA) -cp $(OUT_DIR) RestaurantLauncher \
