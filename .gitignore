@@ -1,0 +1,10 @@
+# Compiled classes (created by run.sh and `make build`)
+out/
+*.class
+
+# IDE and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
